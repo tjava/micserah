@@ -10,3 +10,6 @@
 
 ## yarn dev
 * to start the server
+
+## goto /docs
+* to see all the api documentation
