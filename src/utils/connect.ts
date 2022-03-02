@@ -10,6 +10,7 @@ async function connect() {
         log.info("DB connected");
     }  catch (error) {
         log.error("could not connet to db");
+        log.error(error);
         process.exit(1);
     }
     
