@@ -15,7 +15,8 @@ export async function createPostHandler(
   req: Request<{}, {}, CreatePostInput["body"]>,
   res: Response
 ) {
-  const userId = res.locals.user._id;
+  const userId = "621edc1eb2be5bd8c500c376";
+  // const userId = res.locals.user._id;
 
   const body = req.body;
 

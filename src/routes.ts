@@ -150,15 +150,58 @@ function routes(server: Express) {
    *              properties:
    *                  _id:
    *                    type: string
+   *                  title:
+   *                    type: string
    *                  postBody:
    *                    type: string
    *       404:
    *         description: Post not found
    */
   server.get("/api/posts", getAllPostHandler);
+
+  /**
+   * @openapi
+   * '/api/posts':
+   *  post:
+   *     tags:
+   *     - Posts
+   *     summary: Create new post
+   *     requestBody:
+   *      required: true
+   *      content:
+   *        application/json:
+   *           schema:
+   *              type: object
+   *              required:
+   *                - title
+   *                - postBody
+   *              properties:
+   *                title:
+   *                  type: string
+   *                  default: Man Utd match
+   *                postBody:
+   *                  type: string
+   *                  default: this is new sure man utd old with over 5.50 sure old.
+   *     responses:
+   *       200:
+   *         description: Success
+   *         content:
+   *          application/json:
+   *           schema:
+   *              properties:
+   *                  title:
+   *                    type: string
+   *                  postBody:
+   *                    type: string
+   *     409:
+   *       description: Conflict
+   *     400:
+   *       description: Bad request       
+   * 
+   */
   server.post(
     "/api/posts",
-    [requireUser, validateResource(createPostSchema)],
+    validateResource(createPostSchema),
     createPostHandler
   );
 
