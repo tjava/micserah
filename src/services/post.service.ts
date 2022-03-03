@@ -17,7 +17,7 @@ export async function createPost(input: PostInput) {
 export async function findAllPost() {
 
   try {
-    const result = await PostModel.find({}).select("name").select("postBody");
+    const result = await PostModel.find({}).select("title").select("postBody");
     return result;
   } catch (error) {
 
